@@ -1,0 +1,44 @@
+{
+  "name": "decision-trace-ai-system",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.9.0",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/*.test.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "diagnose:supabase": "node --env-file-if-exists=.env.local scripts/checkSupabaseConnection.mjs",
+    "scan:secrets": "node scripts/scanRepositorySecrets.mjs",
+    "test:image-parsing": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/imageResponseParser.test.mjs",
+    "test:board-completion": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/boardImageCompletion.test.mjs",
+    "test:pre-ai": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/preAiStartingPoint.test.mjs",
+    "test:questionnaires": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/postTaskQuestionnaires.test.mjs",
+    "test:decision-trace": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/decisionTraceV1.test.mjs tests/decisionTracePropositionDedup.test.mjs tests/decisionTraceAsyncState.test.mjs tests/decisionTraceReliability.test.mjs tests/decisionTraceMultiUnitPipeline.test.mjs",
+    "test:pilot-calibration": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/pilotCalibrationWorkflow.test.mjs",
+    "test:conversation": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/conversationResponseStability.test.mjs",
+    "test:workspace": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/workspaceLayout.test.mjs",
+    "test:exports": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/researchDataExportIntegrity.test.mjs"
+  },
+  "dependencies": {
+    "@google/genai": "^2.13.0",
+    "@supabase/ssr": "^0.12.4",
+    "@supabase/supabase-js": "^2.112.0",
+    "next": "16.2.11",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.2.11",
+    "typescript": "^5.9.0"
+  }
+}
